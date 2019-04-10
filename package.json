@@ -2,6 +2,11 @@
   "name": "moosicplayer",
   "version": "0.1.0",
   "private": true,
+  "author": {
+    "email": "phanirithvij20003@gmail.com",
+    "name": "Phani Rithvij",
+    "url": "https://github.com/phanirithvij"
+  },
   "dependencies": {
     "@types/react": "^16.8.13",
     "@types/react-dom": "^16.8.3",
@@ -28,12 +33,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "awesome-typescript-loader": "^5.2.1",
-    "css-loader": "^2.1.1",
     "gh-pages": "^2.0.1",
-    "source-map-loader": "^0.2.4",
-    "style-loader": "^0.23.1",
-    "typescript": "^3.4.3",
-    "webpack-cli": "^3.3.0"
+    "typescript": "^3.4.3"
   }
 }

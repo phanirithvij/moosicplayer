@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './App.css';
-import Hello from './components/Hello';
 import Player from './components/Player/Player';
 
 export interface AppProps { };
@@ -17,7 +16,6 @@ class App extends Component {
 	render() {
 		return (
 			<div>
-				<Hello compiler="fuck" framework="mofo"/>
 				<Player src="" srclist={[]}/>
 			</div>
 		);
