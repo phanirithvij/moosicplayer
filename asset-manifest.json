@@ -1,13 +1,13 @@
 {
-  "main.css": "/moosicplayer/static/css/main.913e2b20.chunk.css",
-  "main.js": "/moosicplayer/static/js/main.be343135.chunk.js",
-  "main.js.map": "/moosicplayer/static/js/main.be343135.chunk.js.map",
+  "main.css": "/moosicplayer/static/css/main.32dd409b.chunk.css",
+  "main.js": "/moosicplayer/static/js/main.6879f458.chunk.js",
+  "main.js.map": "/moosicplayer/static/js/main.6879f458.chunk.js.map",
   "runtime~main.js": "/moosicplayer/static/js/runtime~main.a911c074.js",
   "runtime~main.js.map": "/moosicplayer/static/js/runtime~main.a911c074.js.map",
   "static/js/2.d6a534e5.chunk.js": "/moosicplayer/static/js/2.d6a534e5.chunk.js",
   "static/js/2.d6a534e5.chunk.js.map": "/moosicplayer/static/js/2.d6a534e5.chunk.js.map",
   "index.html": "/moosicplayer/index.html",
-  "precache-manifest.4193ca34808c85d6bd5909e5e8520ebf.js": "/moosicplayer/precache-manifest.4193ca34808c85d6bd5909e5e8520ebf.js",
+  "precache-manifest.0afc6b4583a698a722e2fd1555ca9b13.js": "/moosicplayer/precache-manifest.0afc6b4583a698a722e2fd1555ca9b13.js",
   "service-worker.js": "/moosicplayer/service-worker.js",
-  "static/css/main.913e2b20.chunk.css.map": "/moosicplayer/static/css/main.913e2b20.chunk.css.map"
+  "static/css/main.32dd409b.chunk.css.map": "/moosicplayer/static/css/main.32dd409b.chunk.css.map"
 }
