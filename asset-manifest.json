@@ -1,13 +1,13 @@
 {
-  "main.css": "/moosicplayer/static/css/main.32dd409b.chunk.css",
-  "main.js": "/moosicplayer/static/js/main.6879f458.chunk.js",
-  "main.js.map": "/moosicplayer/static/js/main.6879f458.chunk.js.map",
+  "main.css": "/moosicplayer/static/css/main.7401cea6.chunk.css",
+  "main.js": "/moosicplayer/static/js/main.a55c7a28.chunk.js",
+  "main.js.map": "/moosicplayer/static/js/main.a55c7a28.chunk.js.map",
   "runtime~main.js": "/moosicplayer/static/js/runtime~main.a911c074.js",
   "runtime~main.js.map": "/moosicplayer/static/js/runtime~main.a911c074.js.map",
-  "static/js/2.d6a534e5.chunk.js": "/moosicplayer/static/js/2.d6a534e5.chunk.js",
-  "static/js/2.d6a534e5.chunk.js.map": "/moosicplayer/static/js/2.d6a534e5.chunk.js.map",
+  "static/js/2.26ba37d3.chunk.js": "/moosicplayer/static/js/2.26ba37d3.chunk.js",
+  "static/js/2.26ba37d3.chunk.js.map": "/moosicplayer/static/js/2.26ba37d3.chunk.js.map",
   "index.html": "/moosicplayer/index.html",
-  "precache-manifest.0afc6b4583a698a722e2fd1555ca9b13.js": "/moosicplayer/precache-manifest.0afc6b4583a698a722e2fd1555ca9b13.js",
+  "precache-manifest.d0b817f1bd51ed25dc38a2b86800884c.js": "/moosicplayer/precache-manifest.d0b817f1bd51ed25dc38a2b86800884c.js",
   "service-worker.js": "/moosicplayer/service-worker.js",
-  "static/css/main.32dd409b.chunk.css.map": "/moosicplayer/static/css/main.32dd409b.chunk.css.map"
+  "static/css/main.7401cea6.chunk.css.map": "/moosicplayer/static/css/main.7401cea6.chunk.css.map"
 }
