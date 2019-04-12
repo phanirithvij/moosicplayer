@@ -1,13 +1,17 @@
 {
   "main.css": "/moosicplayer/static/css/main.7401cea6.chunk.css",
-  "main.js": "/moosicplayer/static/js/main.a55c7a28.chunk.js",
-  "main.js.map": "/moosicplayer/static/js/main.a55c7a28.chunk.js.map",
+  "main.js": "/moosicplayer/static/js/main.6e8f6b6a.chunk.js",
+  "main.js.map": "/moosicplayer/static/js/main.6e8f6b6a.chunk.js.map",
   "runtime~main.js": "/moosicplayer/static/js/runtime~main.a911c074.js",
   "runtime~main.js.map": "/moosicplayer/static/js/runtime~main.a911c074.js.map",
-  "static/js/2.26ba37d3.chunk.js": "/moosicplayer/static/js/2.26ba37d3.chunk.js",
-  "static/js/2.26ba37d3.chunk.js.map": "/moosicplayer/static/js/2.26ba37d3.chunk.js.map",
+  "static/js/2.b25956b7.chunk.js": "/moosicplayer/static/js/2.b25956b7.chunk.js",
+  "static/js/2.b25956b7.chunk.js.map": "/moosicplayer/static/js/2.b25956b7.chunk.js.map",
   "index.html": "/moosicplayer/index.html",
-  "precache-manifest.d0b817f1bd51ed25dc38a2b86800884c.js": "/moosicplayer/precache-manifest.d0b817f1bd51ed25dc38a2b86800884c.js",
+  "precache-manifest.958f9bacccb4ced564912e6b37ae592d.js": "/moosicplayer/precache-manifest.958f9bacccb4ced564912e6b37ae592d.js",
   "service-worker.js": "/moosicplayer/service-worker.js",
-  "static/css/main.7401cea6.chunk.css.map": "/moosicplayer/static/css/main.7401cea6.chunk.css.map"
+  "static/css/main.7401cea6.chunk.css.map": "/moosicplayer/static/css/main.7401cea6.chunk.css.map",
+  "static/media/left.svg": "/moosicplayer/static/media/left.290174b6.svg",
+  "static/media/pause.svg": "/moosicplayer/static/media/pause.0a0374f8.svg",
+  "static/media/play.svg": "/moosicplayer/static/media/play.dcb8568c.svg",
+  "static/media/right.svg": "/moosicplayer/static/media/right.1ee4c3ee.svg"
 }
