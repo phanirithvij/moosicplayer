@@ -26,11 +26,13 @@ const Player = (props:PlayerProps) => {
 		(props.src) ? setAudio(props.src) : console.log("No src");
 	}, [props.src]);
 
-	/* 
+	const [playing, setPlayinig] = useState(false); /* initially false */
+
+	/*
 		const [analyzer, setAnalyzer] = useState(new Analytics());
 		// DON'T use this as a new analytics object is getting created after each state update.
 	*/
-	const [currBtn, setCurrBtn] = useState(pauseBtn);
+	const [currBtn, setCurrBtn] = useState(playBtn);
 
 	const [analyzer, setAnalyzer] = useState<Analytics>();
 	useEffect(()=>{
@@ -42,17 +44,19 @@ const Player = (props:PlayerProps) => {
 
 	useEffect(()=>{
 		const aud = getAud();
-		aud.onpause = () => {
+		aud.addEventListener('pause', () => {
 			console.log('paused');
 			setCurrBtn(playBtn);
-		};
-		aud.onplay  = ()=>{
+			setPlayinig(false);
+		});
+		aud.addEventListener('play',()=>{
 			console.log('played');
 			setCurrBtn(pauseBtn);
-		};
+			setPlayinig(true);
+		});
 	}, []); /* once */
 
-	const playNext = ()=>{
+	const playNext = ()=>{ /* disable instead of alert */
 		const next = audio.next;
 		if (next){
 			setAudio(next);
@@ -87,19 +91,19 @@ const Player = (props:PlayerProps) => {
 				<div id="audio-player">
 					{
 						audio && audio.src ?
-						<audio id="song" src={audio.src} /* autoPlay */ controls></audio>
+						<audio id="song" src={audio.src} autoPlay={playing} controls></audio>
 						:
 						<p>no audio provided</p>
 					}
 				</div>
 				<div id="player-controls">
-					<div id="prev">
+					<div id="prev" className="prev">
 						<img src={prevBtn} onClick={playPrev} alt="playprev" style={{maxHeight: "50px"}}/>
 					</div>
-					<div id="play">
+					<div id="play" className="play">
 						<img src={currBtn} onClick={pausePlay} alt="play.pause" style={{maxHeight: "50px"}}/>
 					</div>
-					<div id="next">
+					<div id="next" className="next">
 						<img src={nextBtn} onClick={playNext} alt="playnext" style={{maxHeight: "50px"}}/>
 					</div>
 				</div>
