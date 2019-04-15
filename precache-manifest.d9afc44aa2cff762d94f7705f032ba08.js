@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "4a3cab33bbc967144d4d",
-    "url": "/moosicplayer/static/css/main.7401cea6.chunk.css"
+    "revision": "60b81e681841c0bb1fcc",
+    "url": "/moosicplayer/static/css/main.32d3c466.chunk.css"
   },
   {
-    "revision": "4a3cab33bbc967144d4d",
-    "url": "/moosicplayer/static/js/main.8a244eba.chunk.js"
+    "revision": "60b81e681841c0bb1fcc",
+    "url": "/moosicplayer/static/js/main.97a85564.chunk.js"
   },
   {
     "revision": "c547642ef8bc76e88c09",
@@ -16,12 +16,12 @@ self.__precacheManifest = [
     "url": "/moosicplayer/static/js/2.d2a74683.chunk.js"
   },
   {
-    "revision": "0a0374f822722b352c6ca742d26472b3",
-    "url": "/moosicplayer/static/media/pause.0a0374f8.svg"
-  },
-  {
     "revision": "dcb8568c237bc593fe865f6a9f6aee9e",
     "url": "/moosicplayer/static/media/play.dcb8568c.svg"
+  },
+  {
+    "revision": "0a0374f822722b352c6ca742d26472b3",
+    "url": "/moosicplayer/static/media/pause.0a0374f8.svg"
   },
   {
     "revision": "290174b6259ea557de7fde682836d3c6",
@@ -32,7 +32,7 @@ self.__precacheManifest = [
     "url": "/moosicplayer/static/media/right.1ee4c3ee.svg"
   },
   {
-    "revision": "850e3986cf7bc4522e4046d2d896a23e",
+    "revision": "f8ae3166761fa3108f8e1ecaa57c2653",
     "url": "/moosicplayer/index.html"
   }
 ];
