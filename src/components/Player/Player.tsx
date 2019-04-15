@@ -87,7 +87,7 @@ const Player = (props:PlayerProps) => {
 				<div id="audio-player">
 					{
 						audio && audio.src ?
-						<audio id="song" src={audio.src} autoPlay controls></audio>
+						<audio id="song" src={audio.src} /* autoPlay */ controls></audio>
 						:
 						<p>no audio provided</p>
 					}
@@ -108,7 +108,14 @@ const Player = (props:PlayerProps) => {
 			{/* details begins */}
 			<div id="details">
 				{
-					audio && audio.title ? <h2>{audio.title}</h2> : ''
+					<div className="a-title">
+						{audio && audio.title ? <h2>{audio.title}</h2> : ''}
+					</div>
+				}
+				{
+					<div className="a-playc">
+						Playcount : {audio && audio.playcount}
+					</div>
 				}
 			</div>
 			{/* details ends */}
