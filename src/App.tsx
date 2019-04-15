@@ -13,6 +13,7 @@ import { useCookies } from 'react-cookie';
 
 import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom";
 import Hello from './docs/Hello';
+import SongsProvider from './api/Songs';
 
 declare global {
 	interface Window {
@@ -40,42 +41,16 @@ const App = (props: AppProps) => {
 	let [src, setSrc] = useState<AudioC>(new AudioC({src:"junk"}));
 	const [cooky, setCooky, rmCooky] = useCookies(['fuck']);
 
-	useEffect(()=>{
-		(async ()=>{
-			console.log("reached here");
-			// const data = await axios(Data.api.get);
-			const src_ = new AudioC({
-				title : "Achhi Muite by Swimy",
-				src   :`https://res.cloudinary.com/rootworld/video/upload/v1530081026/\
-						soundcloud_acchi_muite_rally_jaxx.mp3`,
-			});
-			const next1 = new AudioC({
-				prev  : src_,
-				title : "Obeying Thermodynamics by Homer Simpsons",
-				src   : "https://res.cloudinary.com/rootworld/video/upload/v1544685814/sample.wav",
-			});
-			const next2 = new AudioC({
-				prev  : next1,
-				title : "Just Awake by Fear,Loathing in LasVegas",
-				src   : "https://res.cloudinary.com/rootworld/video/upload/v1522342267/01_-_Just_Awake.mp3",
-			});
-			/* 
-			...
-			next2.next = next3;
-			*/
-			next1.next = next2;
-			src_.next = next1;
-			setSrc(src_);
-		})();
-	}, []); /* [] => once after mount */
-
 	useEffect(() => {
 		(async () => {
-			const result = await axios(Data.api.get);
-			setData(result.data);
-			console.log("result");
+			// const result = await axios(Data.api.get);
+			// setData(result.data);
+			// console.log("result");
+			const provider = new SongsProvider();
+			const data = provider.playlist;
+			setSrc(data);
 		})();
-	}, []); /* pass [] for once */
+	}, []); /* pass [] for once i.e. componentdidmount */
 
 	useEffect(() => {
 		// const doc : HTMLInputElement = document.querySelector('#dropzone');

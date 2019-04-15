@@ -2,10 +2,16 @@ import User from "./User";
 import { Audiodetails } from "../components/Player/Player.types";
 
 export interface SongsProps {
-    url? : string;
-    user? : User;
+    url?        : string;
+    uploader?   : User;
 };
 
 export interface ServerPlaylist {
-    data : Audiodetails[];
+    data    : Audiodetails[];
 };
+
+export interface PlaylistInfo {
+    owner?  : User;
+    url?    : string;
+
+}

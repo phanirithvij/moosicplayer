@@ -1,48 +1,64 @@
 import { Data } from "../App";
 import axios from "axios";
 import { SongsProps, ServerPlaylist } from "./Songs.types";
-import { AudioC } from "../components/Player/Player.types";
+import { AudioC, Audiodetails } from "../components/Player/Player.types";
 
 
 class SongsProvider {
     api_url = Data.api.get;
-    constructor(props:SongsProps){
+    songs : AudioC;
+    constructor(props?:SongsProps){
         // (async ()=>{
         //     let result = await axios(this.api_url);
-        //     result = result.data;
+        //     let data = result.data;
         // })();
+        /* get data from server */
+        this.songs = this.getSongs({
+            data: [
+                {
+                    title : "Shooting Star by Homemade Kaizoku",
+                    src   : "http://10.1.131.122:8096/emby/Audio/820/universal?UserId=bc7ba719d6c244e2a90abbf5360ae4ef&DeviceId=TW96aWxsYS81LjAgKFgxMTsgTGludXggeDg2XzY0KSBBcHBsZVdlYktpdC81MzcuMzYgKEtIVE1MLCBsaWtlIEdlY2tvKSBDaHJvbWUvNzMuMC4zNjgzLjg2IFNhZmFyaS81MzcuMzZ8MTU1NTM2MDE5MDQ4Mg11&MaxStreamingBitrate=140000000&Container=opus%2Cmp3%7Cmp3%2Caac%7Caac%2Cm4a%7Caac%2Cmp4%7Caac%2Cflac%2Cwebma%2Cwebm%2Cwav%2Cogg&TranscodingContainer=aac&TranscodingProtocol=hls&AudioCodec=aac&api_key=7a2dd84ea9924659945792fac1d24788&PlaySessionId=1555360194351&StartTimeTicks=0&EnableRedirection=true&EnableRemoteMedia=true"
+                },
+                {
+                    title : "Achhi Muite by Swimy",
+                    src   :`https://res.cloudinary.com/rootworld/video/upload/v1530081026/soundcloud_acchi_muite_rally_jaxx.mp3`,
+                },
+                {
+                    title : "Obeying Thermodynamics by Homer Simpsons",
+                    src   : "https://res.cloudinary.com/rootworld/video/upload/v1544685814/sample.wav",
+                },
+                {
+                    title : "Just Awake by Fear,Loathing in LasVegas",
+                    src   : "https://res.cloudinary.com/rootworld/video/upload/v1522342267/01_-_Just_Awake.mp3",
+                }
+            ]
+        });
     };
 
     get playlist() : AudioC {
-        const src_ = new AudioC({
-            title : "Achhi Muite by Swimy",
-            src   :`https://res.cloudinary.com/rootworld/video/upload/v1530081026/\
-                    soundcloud_acchi_muite_rally_jaxx.mp3`,
-        });
-        const next1 = new AudioC({
-            prev  : src_,
-            title : "Obeying Thermodynamics by Homer Simpsons",
-            src   : "https://res.cloudinary.com/rootworld/video/upload/v1544685814/sample.wav",
-        });
-        const next2 = new AudioC({
-            prev  : next1,
-            title : "Just Awake by Fear,Loathing in LasVegas",
-            src   : "https://res.cloudinary.com/rootworld/video/upload/v1522342267/01_-_Just_Awake.mp3",
-        });
-        /*
-        ...
-        next2.next = next3;
-        */
-        next1.next = next2;
-        src_.next = next1;
-        return src_;
+        return this.songs;
     };
 
-    private getPlaylist(data : ServerPlaylist) {
+    set playlist(data : AudioC) {
+        /* data */
+        
+    };
+
+    private getSongs(data : ServerPlaylist) {
         /* got data from server */
-        data.data.forEach(song => {
-            console.log(song);
+        let ret  : AudioC = new AudioC(data.data[0]);
+        let curr : AudioC = ret;
+        var prev : AudioC;                          /* initially undefined */
+        data.data.forEach((song, i) => {
+            curr.prev = prev;                       /* current's previous is prev */
+            curr.next = new AudioC(data.data[i+1]); /* current's next is the next song i.e `i+1` */
+            prev = song;                            /* previous is set */
+            curr = curr.next;                       /* curr changes to the next song */
         });
+        console.log("ret", ret);                    /* should be useful? */
+        window['ret'] = ret;
+        console.log("curr", curr);                  /* should be undefined */
+        return ret;
     };
 
 };

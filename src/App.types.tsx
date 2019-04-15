@@ -3,15 +3,15 @@
 export type num = number;
 
 export interface AppProps {
-	title : string;
+	title	: string;
 };
 
 export interface ApiMethods{
-	get    : string;
-    status : string;
+	get		: string;
+    status	: string;
 };
 
 export interface AppData {
-	s   : num;
-	api : ApiMethods;
+	s	: num;
+	api	: ApiMethods;
 };

@@ -1,7 +1,8 @@
 import { Data } from "../App";
-import { UserProps } from "./User.types";
+import { UserProps, UserDetails } from "./User.types";
 
-class User{
+class User implements UserDetails {
+    name?: string;
     api_url = Data.api.get + "/user";
     constructor(props?: UserProps){
         // const loggedin = loginInfo();
