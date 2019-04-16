@@ -1,5 +1,5 @@
 import React from 'react';
-import { ControlProps } from './Types';
+import { ControlProps } from './Contorls.Types';
 import "./Controls.css";
 
 const Controls = (props:ControlProps) => {
