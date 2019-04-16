@@ -12,9 +12,12 @@
     "@types/react": "^16.8.13",
     "@types/react-dom": "^16.8.3",
     "axios": "^0.18.0",
+    "core-js": "^3.0.1",
     "got": "^9.6.0",
     "react": "^16.8.6",
+    "react-cookie": "^3.1.2",
     "react-dom": "^16.8.6",
+    "react-router-dom": "^5.0.0",
     "react-scripts": "2.1.8"
   },
   "homepage": "https://phanirithvij.github.io/moosicplayer",
@@ -36,6 +39,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "@types/react-router-dom": "^4.3.2",
     "gh-pages": "^2.0.1",
     "typescript": "^3.4.3"
   }

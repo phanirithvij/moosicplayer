@@ -8,7 +8,7 @@ export interface Audiodetails {
 };
 
 export interface PlayerProps {
-	src : AudioC;
+	src? : AudioC;
 	analytics?: boolean;
 };
 
@@ -24,5 +24,5 @@ export class AudioC implements Audiodetails{
 		this.prev = data.prev;
 		this.title = data.title;
 		this.start = data.start;
-	}
-}
+	};
+};

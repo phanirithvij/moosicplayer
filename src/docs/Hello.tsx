@@ -8,16 +8,17 @@ export interface State { };
 
 class Hello extends Component {
     state : State;
-    props! : HelloProps;
+    props!: HelloProps;
     constructor(props: HelloProps){ 
         super(props);
+        console.log(props);
         this.state = { };
     }
     render(){
         return (
             <div>
                 <h1>
-                    Hello from {this.props.compiler} and framework is {this.props.framework}!
+                    Hello and framework is react!
                 </h1>
             </div>
         );

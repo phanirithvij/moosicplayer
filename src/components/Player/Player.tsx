@@ -20,11 +20,12 @@ const getAud = () : HTMLAudioElement => {
 };
 
 const Player = (props:PlayerProps) => {
+	console.log("Player props", props);
 	const [audio, setAudio] = useState<AudioC>(new AudioC({"src":"placeholder.mp3"}));
 	useEffect(()=>{
-		setAudio(props.src);
+		(props.src) ? setAudio(props.src) : console.log("No src");
 	}, [props.src]);
-	console.log("fresh player:", props);
+
 	/* 
 		const [analyzer, setAnalyzer] = useState(new Analytics());
 		// DON'T use this as a new analytics object is getting created after each state update.
@@ -85,7 +86,7 @@ const Player = (props:PlayerProps) => {
 			<div id="container">
 				<div id="audio-player">
 					{
-						audio.src ?
+						audio && audio.src ?
 						<audio id="song" src={audio.src} autoPlay controls></audio>
 						:
 						<p>no audio provided</p>
@@ -107,7 +108,7 @@ const Player = (props:PlayerProps) => {
 			{/* details begins */}
 			<div id="details">
 				{
-					audio.title ? <h2>{audio.title}</h2> : ''
+					audio && audio.title ? <h2>{audio.title}</h2> : ''
 				}
 			</div>
 			{/* details ends */}
