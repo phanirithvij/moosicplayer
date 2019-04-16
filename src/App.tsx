@@ -14,6 +14,7 @@ import { useCookies } from 'react-cookie';
 import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom";
 import Hello from './docs/Hello';
 import SongsProvider from './api/Songs';
+import { renderPlayer } from './helpers/Render';
 
 declare global {
 	interface Window {
@@ -39,7 +40,8 @@ const App = (props: AppProps) => {
 	const [title, setTitle] = useState(props.title);
 	const [data, setData] = useState(null);
 	let [src, setSrc] = useState<AudioC>(new AudioC({src:"junk"}));
-	const [cooky, setCooky, rmCooky] = useCookies(['fuck']);
+	const [cooky, setCooky, rmCooky] = useCookies(['duck']);
+	const [players, setPlayers] = useState<JSX.Element[]>();
 
 	useEffect(() => {
 		(async () => {
@@ -84,13 +86,14 @@ const App = (props: AppProps) => {
 	return (
 		<Router>
 			<div id="App">
-				{/* <Route exact path="/" component={App} /> */}
 				<Switch>
-					<Route exact path="/:p/:id" component={Player} />
+					<Route
+						exact
+						path="/:xD/:id"
+						component={Player}/>
 					<Route exact path="/hello/:id" component={Hello} />
 				</Switch>
-				{/* <Route exact path="/" component={App} /> */}
-				<Player src={src} analytics={false} />
+				<Player src={src} analytics={false} enabled={false} />
 			</div>
 		</Router>
 	);

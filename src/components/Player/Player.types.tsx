@@ -9,8 +9,10 @@ export interface Audiodetails {
 };
 
 export interface PlayerProps {
+	id?			: string;
 	src?		: AudioC;
 	analytics?	: boolean;
+	enabled?	: boolean;
 };
 
 export class AudioC implements Audiodetails{

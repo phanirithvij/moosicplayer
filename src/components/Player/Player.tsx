@@ -10,6 +10,8 @@ import pauseBtn from "../../assets/pause.svg";
 import playBtn from "../../assets/play.svg";
 import prevBtn from "../../assets/left.svg";
 import nextBtn from "../../assets/right.svg";
+import Details from '../Details/Details';
+import Controls from './controls/Controls';
 
 const getAud = () : HTMLAudioElement => {
 	const aud : HTMLAudioElement | null = document.querySelector('#song');
@@ -85,7 +87,7 @@ const Player = (props:PlayerProps) => {
 	};
 
 	return (
-		<div id="player">
+		<div id={props.id}>
 			{/* wrapper begins */}
 			<div id="container">
 				<div id="audio-player">
@@ -96,33 +98,16 @@ const Player = (props:PlayerProps) => {
 						<p>no audio provided</p>
 					}
 				</div>
-				<div id="player-controls">
-					<div id="prev" className="prev">
-						<img src={prevBtn} onClick={playPrev} alt="playprev" style={{maxHeight: "50px"}}/>
-					</div>
-					<div id="play" className="play">
-						<img src={currBtn} onClick={pausePlay} alt="play.pause" style={{maxHeight: "50px"}}/>
-					</div>
-					<div id="next" className="next">
-						<img src={nextBtn} onClick={playNext} alt="playnext" style={{maxHeight: "50px"}}/>
-					</div>
-				</div>
+				<Controls
+					pausePlay={pausePlay}
+					playNext={playNext}
+					nextBtn={nextBtn}
+					prevBtn={prevBtn}
+					playPrev={playPrev}
+					currBtn={currBtn}/>
 			</div>
 			{/* wrapper ends */}
-			{/* details begins */}
-			<div id="details">
-				{
-					<div className="a-title">
-						{audio && audio.title ? <h2>{audio.title}</h2> : ''}
-					</div>
-				}
-				{
-					<div className="a-playc">
-						Playcount : {audio && audio.playcount}
-					</div>
-				}
-			</div>
-			{/* details ends */}
+			<Details audio={audio}/>
 		</div>
 	);
 }
