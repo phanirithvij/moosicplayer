@@ -1,5 +1,5 @@
 export enum TooltipStatus{
-    Error, Success
+    Success, Error
 };
 
 export interface TooltipProps{

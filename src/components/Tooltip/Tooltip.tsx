@@ -26,8 +26,8 @@ export type SVG = FunctionComponent<SVGProps<SVGSVGElement>>;
 export const defaultD = {
     message     : "",
     status      : TooltipStatus.Success,
-    setMessage  : ()=>{ },
-    setStatus   : ()=>{ },
+    setMessage  : (mess:string)=>{ },
+    setStatus   : (stat:TooltipStatus)=>{ },
     hide        : ()=>{ },
     show        : ()=>{ },
 };

@@ -21,7 +21,7 @@ export interface AppData {
 };
 
 export enum ServerStatus {
-    Sucess, Failed,
+    Sucess, Error,
 };
 
 export interface Assets {

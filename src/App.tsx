@@ -80,23 +80,21 @@ const App = (props: AppProps) => {
 	window["ttip"] = tooltip;
 	
 	const updateSettings = (sett:SettingsProps)=>{
-		setSettings(sett);
 		const settings_post = appState.api.post + "/settings";
 		(async ()=>{
 			if (appState.apiImplemented){
 				const { data } = await axios.post<SettingsServerResp>(settings_post, sett);
-				if (data.success){
-					/* show a saved message */
-					tooltip.setMessage();
-					tooltip.show();
-					setTimeout(() => {
-						tooltip.hide()
-					}, 2000);
-				} else {
-					/* show a failed message */
-				}
+				const message_ : string = data.message;
+				const status_ = data.status; /* enum to enum */
+				tooltip.setMessage(message_);
+				tooltip.setStatus(status_ as unknown as TooltipStatus);
+				tooltip.show();
+				setTimeout(() => {
+					tooltip.hide()
+				}, 2000);
 			}
 		})();
+		setSettings(sett);
 	};
 
 	useEffect(() => {
