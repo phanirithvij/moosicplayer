@@ -7,7 +7,7 @@ import React, {
     createContext
 } from 'react';
 
-import { Appprovider } from '../../App';
+import { AppProvider } from '../../App';
 import { TooltipProps, TooltipStatus } from './Tooltip.types';
 
 import { ReactComponent as successSvg } from "../../assets/success.svg";
@@ -36,7 +36,7 @@ export const TooltipProvider = createContext(defaultD);
 
 const Tooltip = (props:TooltipProps) => {
 
-    const assets = useContext(Appprovider).assets;
+    const assets = useContext(AppProvider).assets;
 
     const getImage = (p:TooltipProps) => {
         let image   : SVG = successSvg;

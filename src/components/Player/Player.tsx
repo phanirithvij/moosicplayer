@@ -3,7 +3,7 @@ import { MouseEvent } from 'react';
 
 import './Player.css';
 
-import { Appprovider } from '../../App';
+import { AppProvider } from '../../App';
 import Analytics from '../../utils/Analytics';
 import { PlayerProps, AudioC, PlayerStore, PlayState } from './Player.types';
 
@@ -36,7 +36,7 @@ const Player = (props:PlayerProps) => {
 		(props.src) ? setAudio(props.src) : console.log("No src");
 	}, [props.src]);
 
-	const appData = useContext(Appprovider);
+	const appData = useContext(AppProvider);
 
 	const audioEnded = ()=>{
 		const aud = getAud();

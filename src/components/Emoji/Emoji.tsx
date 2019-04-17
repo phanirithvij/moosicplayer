@@ -1,6 +1,6 @@
 import React, { useEffect, useContext } from 'react';
 import Axios from 'axios';
-import { Data, Appprovider } from '../../App';
+import { Data, AppProvider } from '../../App';
 
 export interface EmojiProps {
     unicode     : string;
@@ -17,7 +17,7 @@ const Emoji = (props:EmojiProps) => {
         const { data } = await Axios.get<string>(url);
         return data;
     };
-    const appData = useContext(Appprovider);
+    const appData = useContext(AppProvider);
 
     useEffect(()=>{
         (async ()=>{

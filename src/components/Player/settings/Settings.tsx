@@ -2,7 +2,7 @@ import React, { useContext, ChangeEvent, useEffect } from 'react';
 import Axios from 'axios';
 
 import { SettingsProps } from './Settings.types';
-import { Appprovider } from '../../../App';
+import { AppProvider } from '../../../App';
 
 import User from '../../../api/User';
 
@@ -21,7 +21,7 @@ const Settings = (props? : SettingsProps) => {
         })();
     };
 
-    const appData = useContext(Appprovider);
+    const appData = useContext(AppProvider);
 
     useEffect(()=>{
         if (appData.apiImplemented) {

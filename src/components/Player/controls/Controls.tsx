@@ -11,7 +11,7 @@ import { PlayerContext } from '../Player';
 
 import "./Controls.css";
 import { PlayState } from '../Player.types';
-import { Appprovider } from '../../../App';
+import { AppProvider } from '../../../App';
 
 const Controls = (props:ControlProps) => {
 
@@ -37,7 +37,7 @@ const Controls = (props:ControlProps) => {
     }
 
     /* auto play settings */
-    const { settings } = useContext(Appprovider);
+    const { settings } = useContext(AppProvider);
     const aplay = settings ? settings.autoplay : true;
 
     return (

@@ -59,7 +59,7 @@ const tempStore : Appstore = {
 	},
 };
 
-export const Appprovider = createContext<Appstore>(tempStore);
+export const AppProvider = createContext<Appstore>(tempStore);
 
 const App = (props: AppProps) => {
 
@@ -129,7 +129,7 @@ const App = (props: AppProps) => {
 	const appState : Appstore = {...tempStore, settings, updateSettings};
 
 	return (
-		<Appprovider.Provider value={appState}>
+		<AppProvider.Provider value={appState}>
 			<Router>
 				<div id="App">
 					<Switch>
@@ -145,7 +145,7 @@ const App = (props: AppProps) => {
 						status={tooltip.status}/>
 				</div>
 			</Router>
-		</Appprovider.Provider>
+		</AppProvider.Provider>
 	);
 }
 
