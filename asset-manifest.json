@@ -1,17 +1,17 @@
 {
-  "main.css": "/moosicplayer/static/css/main.5d29e347.chunk.css",
-  "main.js": "/moosicplayer/static/js/main.781567e9.chunk.js",
-  "main.js.map": "/moosicplayer/static/js/main.781567e9.chunk.js.map",
+  "main.css": "/moosicplayer/static/css/main.ab1486f9.chunk.css",
+  "main.js": "/moosicplayer/static/js/main.8589bd0f.chunk.js",
+  "main.js.map": "/moosicplayer/static/js/main.8589bd0f.chunk.js.map",
   "runtime~main.js": "/moosicplayer/static/js/runtime~main.a911c074.js",
   "runtime~main.js.map": "/moosicplayer/static/js/runtime~main.a911c074.js.map",
-  "static/js/2.c1d611fd.chunk.js": "/moosicplayer/static/js/2.c1d611fd.chunk.js",
-  "static/js/2.c1d611fd.chunk.js.map": "/moosicplayer/static/js/2.c1d611fd.chunk.js.map",
+  "static/js/2.b9364291.chunk.js": "/moosicplayer/static/js/2.b9364291.chunk.js",
+  "static/js/2.b9364291.chunk.js.map": "/moosicplayer/static/js/2.b9364291.chunk.js.map",
   "index.html": "/moosicplayer/index.html",
-  "precache-manifest.03f25a19e0b72b4787976bb652a6c899.js": "/moosicplayer/precache-manifest.03f25a19e0b72b4787976bb652a6c899.js",
+  "precache-manifest.f87d5bbc545015c4e26bed3a3849e714.js": "/moosicplayer/precache-manifest.f87d5bbc545015c4e26bed3a3849e714.js",
   "service-worker.js": "/moosicplayer/service-worker.js",
-  "static/css/main.5d29e347.chunk.css.map": "/moosicplayer/static/css/main.5d29e347.chunk.css.map",
-  "static/media/left.svg": "/moosicplayer/static/media/left.290174b6.svg",
-  "static/media/pause.svg": "/moosicplayer/static/media/pause.0a0374f8.svg",
-  "static/media/play.svg": "/moosicplayer/static/media/play.dcb8568c.svg",
-  "static/media/right.svg": "/moosicplayer/static/media/right.1ee4c3ee.svg"
+  "static/css/main.ab1486f9.chunk.css.map": "/moosicplayer/static/css/main.ab1486f9.chunk.css.map",
+  "static/media/left.f7f97f0c.svg": "/moosicplayer/static/media/left.f7f97f0c.svg",
+  "static/media/pause.0b083927.svg": "/moosicplayer/static/media/pause.0b083927.svg",
+  "static/media/play.b1bb4686.svg": "/moosicplayer/static/media/play.b1bb4686.svg",
+  "static/media/right.1ee4c3ee.svg": "/moosicplayer/static/media/right.1ee4c3ee.svg"
 }
