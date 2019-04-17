@@ -41,7 +41,7 @@ const Controls = (props:ControlProps) => {
     const aplay = settings ? settings.autoplay : true;
 
     return (
-        <div id="player-controls">
+        <div id="player-controls" className="controls">
             <div className="prev" onClick={player_main.playPrev}>
                 <PrevBtn id="prev-btn" style={{maxHeight: "50px"}}/>
             </div>

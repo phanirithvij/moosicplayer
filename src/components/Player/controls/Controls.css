@@ -1,10 +1,24 @@
-.play{ } /* ; */ /* do not add semicolons */
+.play{
+    cursor: pointer;
+    float: left;
+    width: 100px;
+    height: 50px;
+} /* ; */ /* do not add semicolons */
 
 .btn-disabled{
     fill    :rgb(168, 167, 167);
-    cursor  : default;
+    cursor  : pointer;
 }
 
 .prev, .next {
     cursor: pointer;
+    float: left;
+    width: 100px;
+    height: 50px;
+}
+
+.controls{
+    overflow: hidden;
+    width: 100%;
+    height: 50px;
 }

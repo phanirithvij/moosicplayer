@@ -101,7 +101,13 @@ const Player = (props:PlayerProps) => {
 	const playNext = ()=>{ /* disable instead of alert */
 		const next = audio.next;
 		if (next){
+			const aud = getAud();
+			const isplayingbefore = !aud.paused;
 			setAudio(next);
+			console.log("isplhskkua", isplayingbefore);
+			isplayingbefore && setTimeout(() => {
+				(aud.play());
+			}, 10); /* exec after 10ms i.e after setAudio() */
 		} else {
 			// alert("Last song reached");
 		}
@@ -110,7 +116,13 @@ const Player = (props:PlayerProps) => {
 	const playPrev = ()=>{
 		const prev = audio.prev;
 		if (prev){
+			const aud = getAud();
+			const isplayingbefore = !aud.paused;
+			console.log("ispla", isplayingbefore);
 			setAudio(prev);
+			isplayingbefore && setTimeout(() => {
+				(aud.play());
+			}, 10);
 		} else {
 			// alert("First song reached");
 		}
