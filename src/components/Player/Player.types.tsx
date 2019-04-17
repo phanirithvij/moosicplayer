@@ -1,13 +1,17 @@
 import { MouseEvent } from "react";
+import { Singer } from "../../api/Songs.types";
 
 export interface Audiodetails {
+	src			: string;
+	id			: string;
 	title?		: string;
 	duration?	: number; 
-	src			: string;
 	next?		: Audiodetails;
 	prev?		: Audiodetails;
-	start?		: AudioTimestamp;
+	start?		: number;
 	playcount?	: number;
+	thumb?		: string;
+	singers?	: Singer[];
 };
 
 export interface PlayerProps {
@@ -31,17 +35,21 @@ export interface PlayerStore{
 
 export class AudioC implements Audiodetails{
 	src			: string;
+	id			: string;
 	title?		: string;
 	next?		: AudioC;
 	prev?		: AudioC;
-	start?		: AudioTimestamp;
+	start?		: number;
+	thumb?		: string;
 	playcount?	: number = 0;
 	constructor(data:Audiodetails){
 		this.src		= data.src;
+		this.id			= data.id;
 		this.next		= data.next;
 		this.prev		= data.prev;
 		this.title		= data.title;
 		this.start		= data.start;
+		this.thumb		= data.thumb;
 		this.playcount	= data.playcount || 0 ;
 	};
 };

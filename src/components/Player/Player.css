@@ -1,0 +1,14 @@
+.player_container{
+    position: fixed;
+    bottom: 0;
+    z-index: 1;
+    height: 200px;
+    width: 100%;
+    /* background: #282828; */
+    min-width: 620px;
+}
+
+.controls{
+    width: 40%;
+    max-width: 722px;
+}

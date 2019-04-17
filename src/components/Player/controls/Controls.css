@@ -6,7 +6,8 @@
 } /* ; */ /* do not add semicolons */
 
 .btn-disabled{
-    fill    :rgb(168, 167, 167);
+    /* fill    :rgb(168, 167, 167); */
+    fill: #404040;
     cursor  : pointer;
 }
 
@@ -15,10 +16,9 @@
     float: left;
     width: 100px;
     height: 50px;
+    fill: #b3b3b3;
 }
 
 .controls{
     overflow: hidden;
-    width: 100%;
-    height: 50px;
 }

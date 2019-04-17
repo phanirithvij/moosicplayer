@@ -1,8 +1,10 @@
-import React, { useContext, ChangeEvent, useEffect } from 'react';
+import React, { useContext, ChangeEvent, useEffect, useState } from 'react';
 import Axios from 'axios';
 
 import { SettingsProps } from './Settings.types';
 import { AppProvider } from '../../../App';
+
+import "./Settings.css";
 
 import User from '../../../api/User';
 
@@ -23,6 +25,16 @@ const Settings = (props? : SettingsProps) => {
 
     const appData = useContext(AppProvider);
 
+    const currSettings = appData.settings;
+    const aplay = (currSettings && currSettings.autoplay) ? currSettings.autoplay : false;
+
+    const [autoplay, setAutoplay] = useState<boolean>(aplay);
+
+    useEffect(()=>{
+        console.log("Autoplay is", autoplay, props && props.toxic);
+    });
+
+
     useEffect(()=>{
         if (appData.apiImplemented) {
             if (appData.userInfo){
@@ -37,17 +49,21 @@ const Settings = (props? : SettingsProps) => {
     },[]); /* must do it once => no deps */
 
     const updateSettings = (e: ChangeEvent<HTMLInputElement>)=>{
-        (e.target.id == "aplay") ? appData.updateSettings({autoplay:e.currentTarget.checked}) : null;
+        if (e.target.id == "aplay") {
+            setAutoplay(!autoplay);
+            appData.updateSettings({/* ...appData.settings,  */autoplay:!autoplay, toxic : "updatesettings"});
+        }
     };
 
     return (
-        <div>
+        <div className="player_settings">
             AutoPlay
             <input
                 type="checkbox"
                 name="aplay"
                 id="aplay"
-                defaultChecked={false}
+                // defaultChecked={false}
+                checked={autoplay}
                 onChange={updateSettings}/>
         </div>
     );

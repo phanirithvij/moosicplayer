@@ -16,6 +16,10 @@ import SongsProvider from './api/Songs';
 import { SettingsProps, SettingsServerResp } from './components/Player/settings/Settings.types';
 import Tooltip, { TooltipProvider } from './components/Tooltip/Tooltip';
 import { TooltipStatus } from './components/Tooltip/Tooltip.types';
+import Single from './components/Single/Single';
+import Playlist from './components/Playlist/Playlist';
+import Home from './components/Home/Home';
+import SettingsPage from './components/Settings/Settings';
 
 declare global {
 	interface Window {
@@ -37,7 +41,10 @@ export const Data: AppData = {
 window.GL_BL_DAA = Data;
 
 const tempStore : Appstore = {
-	settings		: {autoplay:true},
+	settings		: {
+		autoplay	: true,
+		toxic		: "tempstore",
+	},
 	updateSettings	: (_sett:SettingsProps)=>{},
 	apiImplemented	: false,
 	userInfo		: {},
@@ -63,9 +70,15 @@ export const AppProvider = createContext<Appstore>(tempStore);
 
 const App = (props: AppProps) => {
 
-	let [src, setSrc] = useState<AudioC>(new AudioC({src:"invalid-mp3"}));
+	let [src, setSrc] = useState<AudioC>(new AudioC({
+		src	: "invalid-mp3",
+		id	: "fraud"
+	}));
 	const [cooky, setCooky, rmCooky] = useCookies(['duck']);
-	const [settings, setSettings] = useState<SettingsProps>({autoplay:false});
+	const [settings, setSettings] = useState<SettingsProps>({
+		autoplay	: false,
+		toxic		: "appsettings",
+	});
 	console.log("Settings App level", settings);
 	
 	useEffect(() => {
@@ -76,9 +89,14 @@ const App = (props: AppProps) => {
 		})();
 	}, []); /* pass [] for once i.e. componentdidmount */
 
+	// const [tooltipset, setTooltip] = useState();
 	const tooltip = useContext(TooltipProvider);
-	window["ttip"] = tooltip;
-	
+
+	// useEffect(()=>{
+	// 	window["ttip"] = tooltip;
+	// 	setTooltip(tooltip);
+	// }, []);
+
 	const updateSettings = (sett:SettingsProps)=>{
 		const settings_post = appState.api.post + "/settings";
 		(async ()=>{
@@ -133,16 +151,19 @@ const App = (props: AppProps) => {
 			<Router>
 				<div id="App">
 					<Switch>
-						<Route
-							exact
-							path="/:xD/:id"
-							component={Player}/>
-						<Route exact path="/hello/:id" component={Hello} />
+						<Route exact path={["/", "/home", "/h"]} component={Home} />
+						<Route exact path={["/settings", "/s"]} component={SettingsPage} />
+						<Route exact path="/s/:id" render={(props)=>(
+							<Single audio={src} {...props} />
+						)} />
+						<Route exact path="/p/:id" render={(props)=>(
+							<Playlist songs={src} {...props} />
+						)} />
 					</Switch>
 					<Player src={src} analytics={false} enabled={false} />
 					<Tooltip
-						message={tooltip.message}
-						status={tooltip.status}/>
+						message={tooltip && tooltip.message}
+						status={tooltip && tooltip.status}/>
 				</div>
 			</Router>
 		</AppProvider.Provider>

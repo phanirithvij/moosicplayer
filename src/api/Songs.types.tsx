@@ -1,9 +1,16 @@
 import User from "./User";
-import { Audiodetails } from "../components/Player/Player.types";
+import { Audiodetails, AudioC } from "../components/Player/Player.types";
 
 export interface SongsProps {
     url?        : string;
     uploader?   : User;
+};
+
+export interface Singer {
+    name        : string;
+    bandname?   : string;
+    thumb       : string;
+    img         : string;
 };
 
 export interface ServerPlaylist {
@@ -13,5 +20,5 @@ export interface ServerPlaylist {
 export interface PlaylistInfo {
     owner?  : User;
     url?    : string;
-
-}
+    songs   : AudioC; 
+};

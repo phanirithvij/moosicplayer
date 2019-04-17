@@ -24,14 +24,20 @@ const state : PlayerStore = {
 	playPrev	: () => { },
 	pausePlay	: (_e:MouseEvent) => { },
 	currBtn		: PlayState.playing,
-	audio		: new AudioC({src:""}),
+	audio		: new AudioC({
+		src	: "",
+		id	: ""
+	}),
 };
 
 export const PlayerContext = createContext<PlayerStore>(state);
 
 const Player = (props:PlayerProps) => {
 	console.log("Player props", props);
-	const [audio, setAudio] = useState<AudioC>(new AudioC({src:"placeholder.mp3"}));
+	const [audio, setAudio] = useState<AudioC>(new AudioC({
+		src	: "placeholder-mp3",
+		id	: "invalid"
+	}));
 	useEffect(()=>{
 		(props.src) ? setAudio(props.src) : console.log("No src");
 	}, [props.src]);
@@ -84,7 +90,21 @@ const Player = (props:PlayerProps) => {
 		aud.addEventListener('pause', audioPaused);
 		aud.addEventListener('play', audioPlayed);
 	}, []); /* once */
-	
+
+	const now = performance.now();
+	console.log("Now is ", now);
+
+	useEffect(()=>{
+		const aud = getAud();
+		if (audio.start){
+			const now = performance.now();
+			console.log("Start time here is ", audio.start, now);
+			aud.currentTime = audio.start;
+		}else{
+			console.log("no start");
+		}
+	}, [audio.start, audio.src, audio]);
+
 	useEffect(()=>{
 		const aud = getAud();
 		aud.autoplay =
@@ -137,22 +157,22 @@ const Player = (props:PlayerProps) => {
 
 	return (
 		<PlayerContext.Provider value={state}>
-			<div id={props.id}>
+			<div id={props.id} className="player_container">
 				{/* wrapper begins */}
 				<div id="container">
-					<div id="audio-player">
+					<Details audio={audio}/>
+					<Controls />
+					<div id="audio-player" className="player-main">
 						{
 							audio && audio.src ?
-							<audio id="song" src={audio.src} controls></audio>
+							<audio id="song" src={audio.src} controls hidden></audio>
 							:
 							<p>no audio provided</p>
 						}
 					</div>
-					<Controls />
-					<Settings />
+					<Settings toxic={"playersettings"} />
 				</div>
 				{/* wrapper ends */}
-				<Details audio={audio}/>
 			</div>
 		</PlayerContext.Provider>
 	);

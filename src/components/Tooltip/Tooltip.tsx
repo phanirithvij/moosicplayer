@@ -67,6 +67,7 @@ const Tooltip = (props?:TooltipProps) => {
     const [status, setStatus] = useState<TooltipStatus>(defaultD.status);
 
     useEffect(()=>{
+        /* get className from status */
         if(props && props.status){
             let { image, class_ } = getImage(props.status);
             class_ = (class_ as string);
