@@ -11,8 +11,8 @@ class Analytics {
     }
 
     init(){
-        console.info("Analytics started");
-        console.info("Establishing connection....");
+        // console.info("Analytics started");
+        // console.info("Establishing connection....");
         (async ()=>{
             const result = await axios(Data.api.status);
             // console.log(result.data);

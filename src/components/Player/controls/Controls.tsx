@@ -11,6 +11,7 @@ import { PlayerContext } from '../Player';
 
 import "./Controls.css";
 import { PlayState } from '../Player.types';
+import { Appprovider } from '../../../App';
 
 const Controls = (props:ControlProps) => {
 
@@ -26,7 +27,7 @@ const Controls = (props:ControlProps) => {
     const nextB : SVGSVGElement | null = document.querySelector('#next-btn');
     const prevB : SVGSVGElement | null = document.querySelector('#prev-btn');
 
-    console.log(nextI, prevI);
+    /* console.log(nextI, prevI); */
 
     if (nextB){
         (!nextI) ? nextB.classList.add("btn-disabled") : nextB.classList.remove("btn-disabled");
@@ -34,6 +35,10 @@ const Controls = (props:ControlProps) => {
     if (prevB){
         (!prevI) ? prevB.classList.add("btn-disabled") : prevB.classList.remove("btn-disabled");
     }
+
+    /* auto play settings */
+    const { settings } = useContext(Appprovider);
+    const aplay = settings ? settings.autoplay : true;
 
     return (
         <div id="player-controls">
@@ -53,8 +58,11 @@ const Controls = (props:ControlProps) => {
                 onClick={player_main.playNext}>
                 <NextBtn id="next-btn" style={{maxHeight: "50px"}}/>
             </div>
-            <button onClick={player_main.playPrev} disabled={!prevI}>prev</button>
-            <button onClick={player_main.playNext} disabled={!nextI}>next</button>
+            {
+                aplay ?
+                "Autoplay enabled 😀" :
+                "Autoplay disabled 😭"
+            }
         </div>
     )
 }

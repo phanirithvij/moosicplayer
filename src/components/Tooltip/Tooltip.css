@@ -1,0 +1,21 @@
+.closer{
+    color: blue;
+    cursor: pointer;
+}
+
+.tooltip .error{
+    fill: rgb(0, 255, 21);
+}
+
+.tooltip .success{
+    fill: aquamarine;
+}
+
+.success .message {
+    background: antiquewhite;
+}
+
+.error .message {
+    background: rgb(199, 37, 37);
+    color: whitesmoke;
+}

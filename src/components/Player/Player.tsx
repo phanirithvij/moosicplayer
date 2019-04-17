@@ -1,13 +1,15 @@
-import React, { useState, useEffect, createContext, Component, useContext } from 'react';
+import React, { useState, useEffect, createContext, useContext } from 'react';
 import { MouseEvent } from 'react';
 
 import './Player.css';
 
+import { Appprovider } from '../../App';
 import Analytics from '../../utils/Analytics';
 import { PlayerProps, AudioC, PlayerStore, PlayState } from './Player.types';
 
 import Details from '../Details/Details';
 import Controls from './controls/Controls';
+import Settings from './settings/Settings';
 
 const getAud = () : HTMLAudioElement => {
 	const aud : HTMLAudioElement | null = document.querySelector('#song');
@@ -34,29 +36,33 @@ const Player = (props:PlayerProps) => {
 		(props.src) ? setAudio(props.src) : console.log("No src");
 	}, [props.src]);
 
-	const [playing, setPlayinig] = useState(false); /* initially false */
-	
+	const appData = useContext(Appprovider);
+
 	const audioEnded = ()=>{
 		const aud = getAud();
 		if (audio.next){
 			console.log("Play next", audio.next.src);
 		}
-		playNext();
-		aud.autoplay = (aud.paused);
+		setTimeout(() => {
+			console.log("next");
+			aud.autoplay && playNext(); /* play next only if autoplay is true */
+		}, 1000);
 	};
 
-	const audioPaused = (e:Event) => {
+	const audioPaused : EventListenerOrEventListenerObject = (e:Event) => {
 		const now = performance.now();
-		console.log('paused', now, e.type);
+		console.log('paused', now);
+
+		/* https://stackoverflow.com/a/48100616/8608146 */
+		const audio_ended = (e.currentTarget as HTMLAudioElement).ended;
+
 		setCurrBtn(PlayState.playing);
-		setPlayinig(false);
 	};
 
 	const audioPlayed = ()=>{
 		const now = performance.now();
 		console.log('played', now);
 		setCurrBtn(PlayState.paused);
-		setPlayinig(true);
 	};
 
 	/*
@@ -65,25 +71,32 @@ const Player = (props:PlayerProps) => {
 	*/
 	const [currBtn, setCurrBtn] = useState(PlayState.playing);
 
-	const [analyzer, setAnalyzer] = useState<Analytics>();
+	const [analyzer, setAnalyzer] = useState();
 	useEffect(()=>{
 		(async ()=>{
 			const analyzer_ = await new Analytics({enabled:!!props.analytics});
 			setAnalyzer(analyzer_);
 		})();
 	}, []); /* only once */
-	
+
 	useEffect(()=>{
 		const aud = getAud();
 		aud.addEventListener('pause', audioPaused);
 		aud.addEventListener('play', audioPlayed);
 	}, []); /* once */
+	
+	useEffect(()=>{
+		const aud = getAud();
+		aud.autoplay =
+		(appData.settings && appData.settings.autoplay) ?
+			appData.settings.autoplay : false; /* AUTOPLAYDEF: false */
+	}, [appData.settings && appData.settings.autoplay]); /* when global autoplay settings change */
 
 	useEffect(() => {
 		const aud = getAud();
-		aud.removeEventListener('ended', audioEnded);
+		aud.removeEventListener('ended', audioEnded); /* important */
 		aud.addEventListener('ended', audioEnded);
-	}, [audio]);
+	}, [audio]); /* when audio changes */
 
 	const playNext = ()=>{ /* disable instead of alert */
 		const next = audio.next;
@@ -118,12 +131,13 @@ const Player = (props:PlayerProps) => {
 					<div id="audio-player">
 						{
 							audio && audio.src ?
-							<audio id="song" src={audio.src} autoPlay={playing} controls></audio>
+							<audio id="song" src={audio.src} controls></audio>
 							:
 							<p>no audio provided</p>
 						}
 					</div>
 					<Controls />
+					<Settings />
 				</div>
 				{/* wrapper ends */}
 				<Details audio={audio}/>
