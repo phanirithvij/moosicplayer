@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "2104be2b5433167e8567",
-    "url": "/moosicplayer/static/css/main.2a8b5200.chunk.css"
+    "revision": "ee54d471419f67dda17f",
+    "url": "/moosicplayer/static/css/main.ef86d814.chunk.css"
   },
   {
-    "revision": "2104be2b5433167e8567",
-    "url": "/moosicplayer/static/js/main.c3710e1f.chunk.js"
+    "revision": "ee54d471419f67dda17f",
+    "url": "/moosicplayer/static/js/main.d44bea18.chunk.js"
   },
   {
     "revision": "c547642ef8bc76e88c09",
@@ -24,23 +24,23 @@ self.__precacheManifest = [
     "url": "/moosicplayer/static/media/right.1ee4c3ee.svg"
   },
   {
-    "revision": "0b083927dd0befe0cd4c91ad204fdf03",
-    "url": "/moosicplayer/static/media/pause.0b083927.svg"
+    "revision": "8b927ec497673626e0faa3be45153219",
+    "url": "/moosicplayer/static/media/pause.8b927ec4.svg"
   },
   {
-    "revision": "b1bb4686aaf3cc8ea59a3386bf363e79",
-    "url": "/moosicplayer/static/media/play.b1bb4686.svg"
+    "revision": "2ebeaa9812d1b46a3e5621dc1446b248",
+    "url": "/moosicplayer/static/media/play.2ebeaa98.svg"
   },
   {
-    "revision": "4073cfcb17ee025d0417c59aad7a53a0",
-    "url": "/moosicplayer/static/media/success.4073cfcb.svg"
+    "revision": "88236ce84dba103a35802c9afaf01162",
+    "url": "/moosicplayer/static/media/success.88236ce8.svg"
   },
   {
     "revision": "c3886977a3c7f00c4061a6d5d101ae09",
     "url": "/moosicplayer/static/media/error.c3886977.svg"
   },
   {
-    "revision": "8c3aff9a4af05ccb487fa3acc39b0543",
+    "revision": "0ecdbe6ced73d9c1557416923a3b54ff",
     "url": "/moosicplayer/index.html"
   }
 ];

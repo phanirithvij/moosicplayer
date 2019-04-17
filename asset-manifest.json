@@ -1,19 +1,19 @@
 {
-  "main.css": "/moosicplayer/static/css/main.2a8b5200.chunk.css",
-  "main.js": "/moosicplayer/static/js/main.c3710e1f.chunk.js",
-  "main.js.map": "/moosicplayer/static/js/main.c3710e1f.chunk.js.map",
+  "main.css": "/moosicplayer/static/css/main.ef86d814.chunk.css",
+  "main.js": "/moosicplayer/static/js/main.d44bea18.chunk.js",
+  "main.js.map": "/moosicplayer/static/js/main.d44bea18.chunk.js.map",
   "runtime~main.js": "/moosicplayer/static/js/runtime~main.a911c074.js",
   "runtime~main.js.map": "/moosicplayer/static/js/runtime~main.a911c074.js.map",
   "static/js/2.383c981d.chunk.js": "/moosicplayer/static/js/2.383c981d.chunk.js",
   "static/js/2.383c981d.chunk.js.map": "/moosicplayer/static/js/2.383c981d.chunk.js.map",
   "index.html": "/moosicplayer/index.html",
-  "precache-manifest.23f6e70ffa840c1ab39dde055892ebd6.js": "/moosicplayer/precache-manifest.23f6e70ffa840c1ab39dde055892ebd6.js",
+  "precache-manifest.598895e8bc605199847f4518a72a785c.js": "/moosicplayer/precache-manifest.598895e8bc605199847f4518a72a785c.js",
   "service-worker.js": "/moosicplayer/service-worker.js",
-  "static/css/main.2a8b5200.chunk.css.map": "/moosicplayer/static/css/main.2a8b5200.chunk.css.map",
+  "static/css/main.ef86d814.chunk.css.map": "/moosicplayer/static/css/main.ef86d814.chunk.css.map",
   "static/media/error.c3886977.svg": "/moosicplayer/static/media/error.c3886977.svg",
   "static/media/left.f7f97f0c.svg": "/moosicplayer/static/media/left.f7f97f0c.svg",
-  "static/media/pause.0b083927.svg": "/moosicplayer/static/media/pause.0b083927.svg",
-  "static/media/play.b1bb4686.svg": "/moosicplayer/static/media/play.b1bb4686.svg",
+  "static/media/pause.8b927ec4.svg": "/moosicplayer/static/media/pause.8b927ec4.svg",
+  "static/media/play.2ebeaa98.svg": "/moosicplayer/static/media/play.2ebeaa98.svg",
   "static/media/right.1ee4c3ee.svg": "/moosicplayer/static/media/right.1ee4c3ee.svg",
-  "static/media/success.4073cfcb.svg": "/moosicplayer/static/media/success.4073cfcb.svg"
+  "static/media/success.88236ce8.svg": "/moosicplayer/static/media/success.88236ce8.svg"
 }
