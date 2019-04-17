@@ -24,7 +24,7 @@ declare global{
 export type SVG = FunctionComponent<SVGProps<SVGSVGElement>>;
 
 export const defaultD = {
-    message     : "",
+    message     : "fuckkk",
     status      : TooltipStatus.Success,
     setMessage  : (mess:string)=>{ },
     setStatus   : (stat:TooltipStatus)=>{ },
@@ -34,14 +34,14 @@ export const defaultD = {
 
 export const TooltipProvider = createContext(defaultD);
 
-const Tooltip = (props:TooltipProps) => {
+const Tooltip = (props?:TooltipProps) => {
 
     const assets = useContext(AppProvider).assets;
 
-    const getImage = (p:TooltipProps) => {
+    const getImage = (statusS:TooltipStatus) => {
         let image   : SVG = successSvg;
-        let class_     : string = "success";
-        switch (p.status) {
+        let class_  : string = "success";
+        switch (statusS) {
             case TooltipStatus.Error:
                 image   = errorSvg;
                 class_  = "error";
@@ -49,7 +49,7 @@ const Tooltip = (props:TooltipProps) => {
             default:
                 break;
         }
-        return [image, class_];
+        return {image, class_};
     };
 
     const show = ()=>{
@@ -63,23 +63,31 @@ const Tooltip = (props:TooltipProps) => {
     const [ImageSvg, setImageSvg] = useState<SVG>(successSvg);
     const [class_, setClass_] = useState<string>();
     const [hidden, setHidden] = useState<boolean>();
+    const [message, setMessage] = useState<string>(defaultD.message);
+    const [status, setStatus] = useState<TooltipStatus>(defaultD.status);
 
     useEffect(()=>{
-        let [imag, class_] = getImage(props);
-        class_ = (class_ as string);
-        setImageSvg((imag as SVG));
-        setClass_(class_);
+        if(props && props.status){
+            let { image, class_ } = getImage(props.status);
+            class_ = (class_ as string);
+            setImageSvg((image as SVG));
+            setClass_(class_);
+        }
     },[props]);
 
     useEffect(()=>{
         /* set appdata.assets.tooltips */
-    },[]);
+        let { image, class_ } = getImage(status);
+        class_ = (class_ as string);
+        setImageSvg((image as SVG));
+        setClass_(class_);
+    },[status]);
 
     useEffect(() => {
-        setHidden((props.hidden) ? props.hidden : false);
+        setHidden((props && props.hidden) ? props.hidden : false);
     }, []);
 
-    const valUUU = {...defaultD, hide, show};
+    const valUUU = {...defaultD, hide, show, setStatus, setMessage};
 
     console.log("Value is", valUUU);
     window["asss"] = valUUU;
@@ -92,7 +100,11 @@ const Tooltip = (props:TooltipProps) => {
                 hidden={hidden}>
                 <div className={class_}>
                     <div className="message">
-                        {props.message}
+                        {
+                            (props && props.message)?
+                            props.message :
+                            message
+                        }
                     </div>
                     {
                         /*
