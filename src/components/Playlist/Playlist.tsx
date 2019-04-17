@@ -2,6 +2,8 @@ import React, { useContext, useEffect } from 'react';
 import { RouteComponentProps } from 'react-router';
 import Axios from 'axios';
 
+import "./Playlist.scss";
+
 import { AppProvider, Data } from '../../App';
 import { PlaylistProps } from './Playlist.types';
 import { ServerPlaylist } from '../../api/Songs.types';

@@ -4,7 +4,7 @@ import Axios from 'axios';
 import { SettingsProps } from './Settings.types';
 import { AppProvider } from '../../../App';
 
-import "./Settings.css";
+import "./Settings.scss";
 
 import User from '../../../api/User';
 

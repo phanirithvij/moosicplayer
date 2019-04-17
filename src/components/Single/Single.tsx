@@ -5,6 +5,8 @@ import { Audiodetails, AudioC } from '../Player/Player.types';
 import Details from '../Details/Details';
 import { RouteComponentProps } from 'react-router';
 
+import "./Single.scss";
+
 const Single = (props:SingleProps & RouteComponentProps<Singleparams>) => {
 
     const [audio, setAudio] = useState<AudioC>(props.audio);

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, createContext, useContext } from 'react';
 import { MouseEvent } from 'react';
 
-import './Player.css';
+import './Player.scss';
 
 import { AppProvider } from '../../App';
 import Analytics from '../../utils/Analytics';

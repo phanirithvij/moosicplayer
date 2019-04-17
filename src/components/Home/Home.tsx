@@ -3,6 +3,8 @@ import { RouteComponentProps } from 'react-router';
 import { HomeProps } from './Home.types';
 import { Link } from 'react-router-dom';
 
+import "./Home.scss";
+
 const Home = (props:HomeProps & RouteComponentProps) => {
     return (
         <div className="home">

@@ -1,10 +1,12 @@
 import React from 'react';
+import { HistoryProps } from './Histroy.types';
+import { RouteChildrenProps } from 'react-router';
 
-export const History = (props) => {
-    
+export const History = (props:HistoryProps & RouteChildrenProps) => {
+
     return (
-        <div>
-        
+        <div className="history_container">
+            History of songs played
         </div>
     );
 };

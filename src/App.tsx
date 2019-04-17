@@ -1,6 +1,6 @@
 import React, { useState, useEffect, createContext, useContext } from 'react';
 
-import './App.css';
+import './App.scss';
 
 import Player from './components/Player/Player';
 

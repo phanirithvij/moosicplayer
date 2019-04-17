@@ -9,7 +9,8 @@ import { ReactComponent as PlayBtn } from "../../../assets/play.svg";
 
 import { PlayerContext } from '../Player';
 
-import "./Controls.css";
+import "./Controls.scss";
+
 import { PlayState } from '../Player.types';
 import { AppProvider } from '../../../App';
 

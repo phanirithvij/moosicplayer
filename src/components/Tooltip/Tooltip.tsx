@@ -13,7 +13,7 @@ import { TooltipProps, TooltipStatus } from './Tooltip.types';
 import { ReactComponent as successSvg } from "../../assets/success.svg";
 import { ReactComponent as errorSvg } from "../../assets/error.svg";
 
-import "./Tooltip.css";
+import "./Tooltip.scss";
 
 declare global{
     interface Element{
