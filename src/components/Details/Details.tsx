@@ -6,6 +6,8 @@ import { DetailsProps } from './Details.types';
 import { PlayerContext } from '../Player/Player';
 import { Link } from 'react-router-dom';
 
+import { ReactComponent as HeartSvg } from "../../assets/heart.svg";
+
 const Details = (props:DetailsProps) => {
 
     const playerData = useContext(PlayerContext);
@@ -36,10 +38,13 @@ const Details = (props:DetailsProps) => {
                 </div>
             }
             {
+                // <div className="ilu">I <HeartSvg className="heart" /> U</div>
+            }
+            {/* {
                 <div className="a-playc">
                     Playcount : {audio && audio.playcount}
                 </div>
-            }
+            } */}
         </div>
 
     );

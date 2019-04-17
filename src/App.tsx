@@ -20,6 +20,7 @@ import Single from './components/Single/Single';
 import Playlist from './components/Playlist/Playlist';
 import Home from './components/Home/Home';
 import SettingsPage from './components/Settings/Settings';
+import NavbarLeft from './components/Navbar/Navbar';
 
 declare global {
 	interface Window {
@@ -44,6 +45,8 @@ const tempStore : Appstore = {
 	settings		: {
 		autoplay	: true,
 		toxic		: "tempstore",
+		repeat		: false,
+		loop		: false,
 	},
 	updateSettings	: (_sett:SettingsProps)=>{},
 	apiImplemented	: false,
@@ -149,7 +152,8 @@ const App = (props: AppProps) => {
 	return (
 		<AppProvider.Provider value={appState}>
 			<Router>
-				<div id="App">
+				<div id="App" className="App">
+					<NavbarLeft />
 					<Switch>
 						<Route exact path={["/", "/home", "/h"]} component={Home} />
 						<Route exact path={["/settings", "/s"]} component={SettingsPage} />

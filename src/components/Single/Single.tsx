@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react'
 import { SingleProps, Singleparams } from './Single.types';
 import { AppProvider } from '../../App';
-import { Audiodetails, AudioC } from '../Player/Player.types';
+import { AudioC } from '../Player/Player.types';
 import Details from '../Details/Details';
 import { RouteComponentProps } from 'react-router';
 

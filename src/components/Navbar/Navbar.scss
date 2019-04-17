@@ -1,0 +1,32 @@
+@import "./variables";
+
+.navbar_left{
+    left: 0;
+    top: 0;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    position: fixed;
+    z-index: 4;
+    background-color: rgba(0,0,0,.8);
+    overflow-y: auto;
+    min-height: 0!important;
+    will-change: transform;
+    height: calc(100vh - 90px);
+}
+
+.navBar, .navBar-header {
+    display: flex;
+    -webkit-box-direction: normal;
+}
+
+.navBar-header {
+    -webkit-box-orient: horizontal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}

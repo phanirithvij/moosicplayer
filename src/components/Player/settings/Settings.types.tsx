@@ -1,8 +1,10 @@
 import { ServerStatus } from "../../../App.types";
 
 export interface SettingsProps {
-    autoplay?   : boolean;
     toxic       : string;
+    autoplay?   : boolean;
+    loop?       : boolean;
+    repeat?     : boolean;
 };
 
 export interface SettingsServerResp{
