@@ -1,0 +1,10 @@
+.play{ } /* ; */ /* do not add semicolons */
+
+.btn-disabled{
+    fill    :rgb(168, 167, 167);
+    cursor  : default;
+}
+
+.prev, .next {
+    cursor: pointer;
+}

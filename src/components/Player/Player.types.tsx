@@ -1,3 +1,5 @@
+import { MouseEvent } from "react";
+
 export interface Audiodetails {
 	title?		: string;
 	duration?	: number; 
@@ -13,6 +15,18 @@ export interface PlayerProps {
 	src?		: AudioC;
 	analytics?	: boolean;
 	enabled?	: boolean;
+};
+
+export enum PlayState {
+	playing, paused
+};
+
+export interface PlayerStore{
+	playNext	: VoidFunction;
+	playPrev	: VoidFunction;
+	pausePlay	: (_e: MouseEvent)=>void;
+	currBtn		: PlayState;
+	audio		: AudioC;
 };
 
 export class AudioC implements Audiodetails{

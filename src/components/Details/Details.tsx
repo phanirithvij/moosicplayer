@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { DetailsProps } from './Details.types';
+import { PlayerContext } from '../Player/Player';
 
 const Details = (props:DetailsProps) => {
-    const audio = props.audio;
+
+    const playerData = useContext(PlayerContext);
+    const audio = playerData.audio;
+
     return (
         <div id="details">
             {
@@ -16,6 +20,7 @@ const Details = (props:DetailsProps) => {
                 </div>
             }
         </div>
+
     );
 };
 

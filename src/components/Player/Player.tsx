@@ -1,15 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, createContext, Component, useContext } from 'react';
 import { MouseEvent } from 'react';
 
 import './Player.css';
 
 import Analytics from '../../utils/Analytics';
-import { PlayerProps, AudioC } from './Player.types';
+import { PlayerProps, AudioC, PlayerStore, PlayState } from './Player.types';
 
-import pauseBtn from "../../assets/pause.svg";
-import playBtn from "../../assets/play.svg";
-import prevBtn from "../../assets/left.svg";
-import nextBtn from "../../assets/right.svg";
 import Details from '../Details/Details';
 import Controls from './controls/Controls';
 
@@ -21,20 +17,53 @@ const getAud = () : HTMLAudioElement => {
 	return aud;
 };
 
+const state : PlayerStore = {
+	playNext	: () => { },
+	playPrev	: () => { },
+	pausePlay	: (_e:MouseEvent) => { },
+	currBtn		: PlayState.playing,
+	audio		: new AudioC({src:""}),
+};
+
+export const PlayerContext = createContext<PlayerStore>(state);
+
 const Player = (props:PlayerProps) => {
 	console.log("Player props", props);
-	const [audio, setAudio] = useState<AudioC>(new AudioC({"src":"placeholder.mp3"}));
+	const [audio, setAudio] = useState<AudioC>(new AudioC({src:"placeholder.mp3"}));
 	useEffect(()=>{
 		(props.src) ? setAudio(props.src) : console.log("No src");
 	}, [props.src]);
 
 	const [playing, setPlayinig] = useState(false); /* initially false */
+	
+	const audioEnded = ()=>{
+		const aud = getAud();
+		if (audio.next){
+			console.log("Play next", audio.next.src);
+		}
+		playNext();
+		aud.autoplay = (aud.paused);
+	};
+
+	const audioPaused = (e:Event) => {
+		const now = performance.now();
+		console.log('paused', now, e.type);
+		setCurrBtn(PlayState.playing);
+		setPlayinig(false);
+	};
+
+	const audioPlayed = ()=>{
+		const now = performance.now();
+		console.log('played', now);
+		setCurrBtn(PlayState.paused);
+		setPlayinig(true);
+	};
 
 	/*
 		const [analyzer, setAnalyzer] = useState(new Analytics());
 		// DON'T use this as a new analytics object is getting created after each state update.
 	*/
-	const [currBtn, setCurrBtn] = useState(playBtn);
+	const [currBtn, setCurrBtn] = useState(PlayState.playing);
 
 	const [analyzer, setAnalyzer] = useState<Analytics>();
 	useEffect(()=>{
@@ -43,27 +72,25 @@ const Player = (props:PlayerProps) => {
 			setAnalyzer(analyzer_);
 		})();
 	}, []); /* only once */
-
+	
 	useEffect(()=>{
 		const aud = getAud();
-		aud.addEventListener('pause', () => {
-			console.log('paused');
-			setCurrBtn(playBtn);
-			setPlayinig(false);
-		});
-		aud.addEventListener('play',()=>{
-			console.log('played');
-			setCurrBtn(pauseBtn);
-			setPlayinig(true);
-		});
+		aud.addEventListener('pause', audioPaused);
+		aud.addEventListener('play', audioPlayed);
 	}, []); /* once */
+
+	useEffect(() => {
+		const aud = getAud();
+		aud.removeEventListener('ended', audioEnded);
+		aud.addEventListener('ended', audioEnded);
+	}, [audio]);
 
 	const playNext = ()=>{ /* disable instead of alert */
 		const next = audio.next;
 		if (next){
 			setAudio(next);
 		} else {
-			alert("Last song reached");
+			// alert("Last song reached");
 		}
 	};
 
@@ -72,7 +99,7 @@ const Player = (props:PlayerProps) => {
 		if (prev){
 			setAudio(prev);
 		} else {
-			alert("First song reached");
+			// alert("First song reached");
 		}
 	};
 
@@ -81,34 +108,27 @@ const Player = (props:PlayerProps) => {
 		(aud.paused) ? aud.play() : aud.pause();
 	};
 
-	const changeSrc = (src:string, aud? : HTMLAudioElement)=>{
-		const aud_ = aud || getAud();
-		aud_.src = src;
-	};
+	const state : PlayerStore = { playNext, pausePlay, playPrev, currBtn, audio };
 
 	return (
-		<div id={props.id}>
-			{/* wrapper begins */}
-			<div id="container">
-				<div id="audio-player">
-					{
-						audio && audio.src ?
-						<audio id="song" src={audio.src} autoPlay={playing} controls></audio>
-						:
-						<p>no audio provided</p>
-					}
+		<PlayerContext.Provider value={state}>
+			<div id={props.id}>
+				{/* wrapper begins */}
+				<div id="container">
+					<div id="audio-player">
+						{
+							audio && audio.src ?
+							<audio id="song" src={audio.src} autoPlay={playing} controls></audio>
+							:
+							<p>no audio provided</p>
+						}
+					</div>
+					<Controls />
 				</div>
-				<Controls
-					pausePlay={pausePlay}
-					playNext={playNext}
-					nextBtn={nextBtn}
-					prevBtn={prevBtn}
-					playPrev={playPrev}
-					currBtn={currBtn}/>
+				{/* wrapper ends */}
+				<Details audio={audio}/>
 			</div>
-			{/* wrapper ends */}
-			<Details audio={audio}/>
-		</div>
+		</PlayerContext.Provider>
 	);
 }
 
