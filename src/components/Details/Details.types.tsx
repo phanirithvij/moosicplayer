@@ -1,5 +1,5 @@
-import { AudioC } from "../Player/Player.types";
+import { AudioCC } from "../Player/Player.types";
 
 export interface DetailsProps{
-    audio : AudioC;
+    audio : AudioCC;
 };

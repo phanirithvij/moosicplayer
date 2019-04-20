@@ -6,7 +6,7 @@ import Player from './components/Player/Player';
 
 import axios from 'axios';
 import { AppProps, AppData, Appstore } from './App.types';
-import { AudioC } from './components/Player/Player.types';
+import { AudioCC } from './components/Player/Player.types';
 import User from './api/User';
 import { useCookies } from 'react-cookie';
 
@@ -43,6 +43,7 @@ export const Data: AppData = {
 window.GL_BL_DAA = Data;
 
 const tempStore : Appstore = {
+	name			: "Moosic",
 	settings		: {
 		autoplay	: true,
 		toxic		: "tempstore",
@@ -51,7 +52,7 @@ const tempStore : Appstore = {
 	},
 	updateSettings	: (_sett:SettingsProps)=>{},
 	apiImplemented	: false,
-	userInfo		: {},
+	userInfo		: {id:"pr100"},
 	updateUserinfo	: ()=>{},
 	api				: {
 		get		: "http://localhost:3000",
@@ -74,7 +75,7 @@ export const AppProvider = createContext<Appstore>(tempStore);
 
 const App = (props: AppProps) => {
 
-	let [src, setSrc] = useState<AudioC>(new AudioC({
+	let [src, setSrc] = useState<AudioCC>(new AudioCC({
 		src		: "invalid-mp3",
 		id		: "fraud",
 		title	: "invalid song",
@@ -85,10 +86,10 @@ const App = (props: AppProps) => {
 		toxic		: "appsettings",
 	});
 	console.log("Settings App level", settings);
-	
+
 	useEffect(() => {
 		(async () => {
-			const provider = new SongsProvider();
+			const provider = new SongsProvider({user_id:"pr100"});
 			const data = provider.playlist;
 			setSrc(data);
 		})();
@@ -136,7 +137,7 @@ const App = (props: AppProps) => {
 	useEffect(() => {
 		/* get user from cookies */
 		(async () => {
-			let user = await new User();
+			let user = await new User({id:"pr100"});
 			console.log(user);
 			window.kookie = { cooky, setCooky, rmCooky };
 			if (!cooky["uzer"]) {
@@ -154,26 +155,24 @@ const App = (props: AppProps) => {
 	return (
 		<AppProvider.Provider value={appState}>
 			<Router>
-				<div id="App" className="App">
-					<NavbarLeft />
-					<Switch>
-						<Route exact path={["/", "/home", "/h"]} component={Home} />
-						<Route exact path={["/settings", "/s"]} component={SettingsPage} />
-						<Route exact path={["/credits", "/cr"]} component={Credits} />
-						<Route exact path="/s/:id" render={(props)=>(
-							<Single audio={src} {...props} />
-						)} />
-						<Route exact path="/p/:id" render={(props)=>(
-							<Playlist songs={src} {...props} />
-						)} />
-					</Switch>
-					<Player src={src} analytics={false} enabled={false} />
-					<Tooltip
-						message={tooltip && tooltip.message}
-						status={tooltip && tooltip.status}/>
-					<div className="dviii">
-						<Link to={"/credits"}>credits</Link>
-					</div>
+				<NavbarLeft />
+				<Switch>
+					<Route exact path={["/", "/home", "/h"]} component={Home} />
+					<Route exact path={["/settings", "/s"]} component={SettingsPage} />
+					<Route exact path={["/credits", "/cr"]} component={Credits} />
+					<Route exact path="/s/:id" render={(props)=>(
+						<Single audio={src} {...props} />
+					)} />
+					<Route exact path="/p/:id" render={(props)=>(
+						<Playlist songs={src} {...props} />
+					)} />
+				</Switch>
+				<Player src={src} analytics={false} enabled={false} />
+				<Tooltip
+					message={tooltip && tooltip.message}
+					status={tooltip && tooltip.status}/>
+				<div className="dviii">
+					<Link to={"/credits"}>credits</Link>
 				</div>
 			</Router>
 		</AppProvider.Provider>

@@ -1,5 +1,7 @@
 .details{
     width: 30%;
+    min-height: 100px;
+    height: auto;
     min-width: 180px;
 }
 
@@ -14,4 +16,15 @@
 
 .img-svg{
     max-height: 100px;
+}
+
+.svg-loading{
+    max-height: 60px;
+    animation: rot 2s linear infinite;
+}
+
+@keyframes rot {
+    100% {
+        transform: rotate(360deg);
+    }
 }

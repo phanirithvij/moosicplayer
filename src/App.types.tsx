@@ -35,6 +35,7 @@ export interface Assets {
 };
 
 export interface Appstore{
+	name			: string;
 	settings?		: SettingsProps;
 	updateSettings	: (sett:SettingsProps)=>void;
 	apiImplemented	: boolean;

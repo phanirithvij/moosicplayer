@@ -5,7 +5,7 @@ import './Player.scss';
 
 import { AppProvider } from '../../App';
 import Analytics from '../../utils/Analytics';
-import { PlayerProps, AudioC, PlayerStore, PlayState } from './Player.types';
+import { PlayerProps, AudioCC, PlayerStore, PlayState } from './Player.types';
 
 import Details from '../Details/Details';
 import Controls from './controls/Controls';
@@ -24,7 +24,7 @@ const state : PlayerStore = {
 	playPrev	: () => { },
 	pausePlay	: (_e:MouseEvent) => { },
 	currBtn		: PlayState.playing,
-	audio		: new AudioC({
+	audio		: new AudioCC({
 		src		: "",
 		id		: "",
 		title	: "",
@@ -35,7 +35,7 @@ export const PlayerContext = createContext<PlayerStore>(state);
 
 const Player = (props:PlayerProps) => {
 	console.log("Player props", props);
-	const [audio, setAudio] = useState<AudioC>(new AudioC({
+	const [audio, setAudio] = useState<AudioCC>(new AudioCC({
 		src		: "placeholder-mp3",
 		id		: "invalid",
 		title	: "huh?",
@@ -155,23 +155,25 @@ const Player = (props:PlayerProps) => {
 		(aud.paused) ? aud.play() : aud.pause();
 	};
 
+	window["songs"] = audio;
+
 	const state : PlayerStore = { playNext, pausePlay, playPrev, currBtn, audio };
 
 	return (
 		<PlayerContext.Provider value={state}>
+			<div id="audio-player" className="player-main" hidden>
+				{
+					audio && audio.src ?
+					<audio id="song" src={audio.src} controls hidden></audio>
+					:
+					<p>no audio provided</p>
+				}
+			</div>
 			<div id={props.id} className="player_container">
 				{/* wrapper begins */}
 				<div id="container">
 					<Details audio={audio}/>
 					<Controls />
-					<div id="audio-player" className="player-main">
-						{
-							audio && audio.src ?
-							<audio id="song" src={audio.src} controls hidden></audio>
-							:
-							<p>no audio provided</p>
-						}
-					</div>
 					<Settings toxic={"playersettings"} />
 				</div>
 				{/* wrapper ends */}

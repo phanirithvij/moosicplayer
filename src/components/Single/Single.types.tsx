@@ -1,7 +1,7 @@
-import { AudioC } from "../Player/Player.types";
+import { AudioCC } from "../Player/Player.types";
 
 export interface SingleProps {
-    audio   : AudioC;
+    audio   : AudioCC;
 };
 
 export interface Singleparams {

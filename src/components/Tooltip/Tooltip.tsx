@@ -14,14 +14,13 @@ import { ReactComponent as successSvg } from "../../assets/success.svg";
 import { ReactComponent as errorSvg } from "../../assets/error.svg";
 
 import "./Tooltip.scss";
+import { SVG } from '../../assets/Images.types';
 
 declare global{
     interface Element{
         hidden? : boolean;
     }
 };
-
-export type SVG = FunctionComponent<SVGProps<SVGSVGElement>>;
 
 export const defaultD = {
     message     : "fuckkk",
@@ -38,7 +37,10 @@ const Tooltip = (props?:TooltipProps) => {
 
     const assets = useContext(AppProvider).assets;
 
-    const getImage = (statusS:TooltipStatus) => {
+    const getImage = (statusS:TooltipStatus) : {
+        image   : SVG;
+        class_  : string;
+    } => {
         let image   : SVG = successSvg;
         let class_  : string = "success";
         switch (statusS) {
