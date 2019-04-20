@@ -1,19 +1,23 @@
 self.__precacheManifest = [
   {
-    "revision": "fa46f10c5e52d643dbb9",
-    "url": "/moosicplayer/static/css/main.b51d7369.chunk.css"
+    "revision": "b51929a986a35c8cfafa",
+    "url": "/moosicplayer/static/css/main.36ff5500.chunk.css"
   },
   {
-    "revision": "fa46f10c5e52d643dbb9",
-    "url": "/moosicplayer/static/js/main.177a945a.chunk.js"
+    "revision": "b51929a986a35c8cfafa",
+    "url": "/moosicplayer/static/js/main.ba571a7b.chunk.js"
   },
   {
     "revision": "c547642ef8bc76e88c09",
     "url": "/moosicplayer/static/js/runtime~main.a911c074.js"
   },
   {
-    "revision": "feb12f4e4baa8bfb619a",
-    "url": "/moosicplayer/static/js/2.9acf5e43.chunk.js"
+    "revision": "26713103a6242a025db1",
+    "url": "/moosicplayer/static/js/2.b96b4f3e.chunk.js"
+  },
+  {
+    "revision": "273af724c007458bde163f41da748d52",
+    "url": "/moosicplayer/static/media/music-2.273af724.svg"
   },
   {
     "revision": "205748a0a1fd06a14cf7ebdd22627f55",
@@ -40,7 +44,11 @@ self.__precacheManifest = [
     "url": "/moosicplayer/static/media/error.c3886977.svg"
   },
   {
-    "revision": "4e72013026a295b058d66911df5c976f",
+    "revision": "89e19f836420952189782b5fb846a635",
+    "url": "/moosicplayer/static/media/music-noimg.89e19f83.svg"
+  },
+  {
+    "revision": "3fda3407e69ff3554f3473927026a94e",
     "url": "/moosicplayer/index.html"
   }
 ];
