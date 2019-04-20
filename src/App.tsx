@@ -21,6 +21,7 @@ import Playlist from './components/Playlist/Playlist';
 import Home from './components/Home/Home';
 import SettingsPage from './components/Settings/Settings';
 import NavbarLeft from './components/Navbar/Navbar';
+import Credits from './assets/Credits';
 
 declare global {
 	interface Window {
@@ -74,8 +75,9 @@ export const AppProvider = createContext<Appstore>(tempStore);
 const App = (props: AppProps) => {
 
 	let [src, setSrc] = useState<AudioC>(new AudioC({
-		src	: "invalid-mp3",
-		id	: "fraud"
+		src		: "invalid-mp3",
+		id		: "fraud",
+		title	: "invalid song",
 	}));
 	const [cooky, setCooky, rmCooky] = useCookies(['duck']);
 	const [settings, setSettings] = useState<SettingsProps>({
@@ -157,6 +159,7 @@ const App = (props: AppProps) => {
 					<Switch>
 						<Route exact path={["/", "/home", "/h"]} component={Home} />
 						<Route exact path={["/settings", "/s"]} component={SettingsPage} />
+						<Route exact path={["/credits", "/cr"]} component={Credits} />
 						<Route exact path="/s/:id" render={(props)=>(
 							<Single audio={src} {...props} />
 						)} />
@@ -168,6 +171,9 @@ const App = (props: AppProps) => {
 					<Tooltip
 						message={tooltip && tooltip.message}
 						status={tooltip && tooltip.status}/>
+					<div className="dviii">
+						<Link to={"/credits"}>credits</Link>
+					</div>
 				</div>
 			</Router>
 		</AppProvider.Provider>

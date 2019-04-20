@@ -7,6 +7,8 @@ import { PlayerContext } from '../Player/Player';
 import { Link } from 'react-router-dom';
 
 import { ReactComponent as HeartSvg } from "../../assets/heart.svg";
+import { ReactComponent as MusicNoimgSvg } from "../../assets/music-noimg.svg";
+import { ReactComponent as MusicNo2imgSvg } from "../../assets/music-2.svg";
 
 const Details = (props:DetailsProps) => {
 
@@ -24,11 +26,7 @@ const Details = (props:DetailsProps) => {
                             className="a-thumb-img a-thumb-small"
                             alt="thumb"/>
                         :
-                        <img
-                            className="a-thumb-img a-thumb-small"
-                            src="http://localhost:8096/emby/Items/787/Images/Primary?maxWidth=480&tag=18a1afb9b22525c4c67cf929e17e4faf&quality=90"
-                            alt="noimg"
-                            />
+                        <MusicNo2imgSvg className="img-svg"/>
                     }
                 </div>
             }

@@ -9,8 +9,9 @@ export interface SongsProps {
 export interface Singer {
     name        : string;
     bandname?   : string;
-    thumb       : string;
-    img         : string;
+    thumb?      : string;
+    img?        : string;
+    id          : string;
 };
 
 export interface ServerPlaylist {

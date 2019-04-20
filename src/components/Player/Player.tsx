@@ -25,8 +25,9 @@ const state : PlayerStore = {
 	pausePlay	: (_e:MouseEvent) => { },
 	currBtn		: PlayState.playing,
 	audio		: new AudioC({
-		src	: "",
-		id	: ""
+		src		: "",
+		id		: "",
+		title	: "",
 	}),
 };
 
@@ -35,8 +36,9 @@ export const PlayerContext = createContext<PlayerStore>(state);
 const Player = (props:PlayerProps) => {
 	console.log("Player props", props);
 	const [audio, setAudio] = useState<AudioC>(new AudioC({
-		src	: "placeholder-mp3",
-		id	: "invalid"
+		src		: "placeholder-mp3",
+		id		: "invalid",
+		title	: "huh?",
 	}));
 	useEffect(()=>{
 		(props.src) ? setAudio(props.src) : console.log("No src");
